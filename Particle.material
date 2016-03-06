@@ -1,0 +1,242 @@
+vertex_program particle_shader/vs glsl 
+{
+    source ParticleMaterialVp.glsl 
+
+    default_params
+    {
+        param_named_auto world_mat world_matrix
+        param_named_auto view_mat view_matrix
+		param_named_auto normal_mat inverse_transpose_world_matrix
+		param_named_auto up_vec view_up_vector
+		param_named timer float 0.0
+		//param_named object_colour float3 0.8 0.3 0.04
+		param_named object_colour float3 0.8 0.8 0.8
+        //param_named_auto projection_mat projection_matrix
+    }
+}
+
+
+geometry_program particle_shader/gs glsl 
+{
+    source ParticleMaterialGp.glsl
+	input_operation_type point_list
+	output_operation_type triangle_strip
+	uses_adjacency_information false
+	max_output_vertices 4
+
+    default_params
+    {
+        param_named_auto projection_mat projection_matrix
+		param_named particle_size float 0.007;
+    }
+}
+
+
+fragment_program particle_shader/fs glsl 
+{
+    source ParticleMaterialFp.glsl 
+
+	default_params
+	{
+		param_named object_colour float3 0.8 0.4 0.03
+		param_named tex_samp int 0
+	}
+}
+
+
+material ParticleMaterial
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 0.960784 0.870588 0.701961
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
+
+material ParticleMaterial1
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 1 0.980392 0.980392
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
+
+material ParticleMaterial2
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 1 0.647059 0
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
+
+
+material ParticleMaterial3
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 1 0.411765 0.705882
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
+
+material ParticleMaterial4
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 0.580392 0 0.827451
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
+
+material ParticleMaterial5
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 0.862745 0.0784314 0.235294
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
+
+material ParticleMaterial6
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref particle_shader/vs
+            {
+				param_named object_colour float3 0.498039 1 0.831373
+            }
+			
+			geometry_program_ref particle_shader/gs
+            {
+            }
+
+            fragment_program_ref particle_shader/fs
+            {
+            }
+
+			texture_unit 
+			{
+				texture_alias tex_samp
+			    texture firework.jpg 2d
+		    }
+        } 
+    }
+}
